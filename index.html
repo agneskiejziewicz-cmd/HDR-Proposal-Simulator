@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HDR Proposal Review Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SCD HDR workshop</p>
+        <h1>HDR Proposal Review Simulator</h1>
+      </div>
+      <nav class="tabs" aria-label="Simulator sections">
+        <button class="tab active" type="button" data-view="review">Review</button>
+        <button class="tab" type="button" data-view="guidance">Guidance</button>
+        <button class="tab" type="button" data-view="workshop-flow">Workshop flow</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="review" class="view active" aria-labelledby="review-title">
+        <section class="proposal-menu" aria-labelledby="proposal-menu-title">
+          <div>
+            <p class="eyebrow">Proposal menu</p>
+            <h2 id="proposal-menu-title">Choose a proposal to review</h2>
+          </div>
+          <div class="proposal-picker">
+            <label class="field-label" for="proposal-select">Proposal</label>
+            <select id="proposal-select"></select>
+            <p id="proposal-field-meta" class="proposal-meta"></p>
+          </div>
+        </section>
+
+        <div class="review-layout">
+          <section class="proposal-panel" aria-labelledby="review-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Proposal extract</p>
+                <h2 id="review-title">Reviewer workspace</h2>
+              </div>
+              <span id="word-count" class="pill">0 words</span>
+            </div>
+            <div id="proposal" class="proposal-editor" contenteditable="true" spellcheck="true" aria-label="Proposal extract"></div>
+
+            <section class="feedback-panel" aria-labelledby="feedback-title">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Feedback generator</p>
+                  <h2 id="feedback-title">Final review structure</h2>
+                </div>
+                <button id="copy-feedback" class="ghost-button" type="button">Copy feedback</button>
+              </div>
+              <div class="feedback-grid">
+                <label>Strength<textarea id="strength"></textarea></label>
+                <label>Concern<textarea id="concern"></textarea></label>
+                <label>Required revision<textarea id="revision"></textarea></label>
+                <label>Final recommendation<textarea id="final-recommendation"></textarea></label>
+              </div>
+            </section>
+          </section>
+
+          <aside class="score-panel" aria-label="Scoring panel">
+            <div class="score-summary" aria-live="polite">
+              <div>
+                <span class="summary-label">Average</span>
+                <strong id="average-score">3.0</strong>
+              </div>
+              <div>
+                <span class="summary-label">Recommendation</span>
+                <strong id="recommendation">Weak Accept</strong>
+              </div>
+            </div>
+            <button id="save-review" class="primary-button" type="button">Save Review</button>
+
+            <div id="criteria-list" class="criteria-list"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="guidance" class="view" aria-labelledby="guidance-title">
+        <div class="section-heading wide">
+          <div>
+            <p class="eyebrow">Workshop rubric</p>
+            <h2 id="guidance-title">Evaluation guidance</h2>
+          </div>
+        </div>
+        <div id="guidance-grid" class="guidance-grid"></div>
+      </section>
+
+      <section id="workshop-flow" class="view" aria-labelledby="workshop-flow-title">
+        <div class="section-heading wide">
+          <div>
+            <p class="eyebrow">Reviewer calibration</p>
+            <h2 id="workshop-flow-title">Workshop flow</h2>
+          </div>
+        </div>
+
+        <div class="flow-callout">
+          The deeper goal is reviewer calibration: helping people become more consistent, evidence-based, and constructive when assessing HDR proposals.
+        </div>
+
+        <div class="flow-grid">
+          <article class="flow-card">
+            <h3>Set Up</h3>
+            <p>Each group assesses one selected proposal. Everyone reviews individually before discussion, using the sliders and evidence boxes.</p>
+          </article>
+
+          <article class="flow-card">
+            <h3>Individual Review</h3>
+            <p>Each reviewer selects scores for the five criteria, writes evidence from the proposal, and completes: Strength, Concern, Required revision, Final recommendation.</p>
+            <p>Use <strong>Save Review</strong> before group discussion so your first judgement is preserved.</p>
+          </article>
+
+          <article class="flow-card">
+            <h3>Small Group Discussion</h3>
+            <p>Within each group, reviewers compare:</p>
+            <ul>
+              <li>Which criteria received the widest score differences</li>
+              <li>What evidence each person used</li>
+              <li>Whether concerns are about proposal quality, fit, feasibility, novelty, or writing clarity</li>
+              <li>Whether the recommendation follows logically from the scores</li>
+              <li>What revision advice would be most useful to the candidate</li>
+            </ul>
+          </article>
+
+          <article class="flow-card">
+            <h3>Group Consensus</h3>
+            <p>Each group then creates a shared final review:</p>
+            <ul>
+              <li>Final score range</li>
+              <li>Final recommendation</li>
+              <li>Top 2 strengths</li>
+              <li>Top 2 concerns</li>
+              <li>Required revisions</li>
+              <li>Any unresolved reviewer disagreement</li>
+            </ul>
+          </article>
+
+          <article class="flow-card">
+            <h3>Whole-Room Debrief</h3>
+            <p>Each group reports back for 5 minutes:</p>
+            <ul>
+              <li>Proposal assessed</li>
+              <li>Average score and recommendation</li>
+              <li>Strongest criterion</li>
+              <li>Weakest criterion</li>
+              <li>Main evidence used</li>
+              <li>Final revision advice</li>
+            </ul>
+          </article>
+
+          <article class="flow-card">
+            <h3>What Groups Can Discuss Later</h3>
+            <p>They can discuss whether reviewers interpreted the rubric consistently. For example, one reviewer may score “novelty” low because the topic is familiar, while another scores it higher because the Vietnam context is underexplored.</p>
+            <p>Useful discussion questions:</p>
+            <ul>
+              <li>Did reviewers reward clear writing more than research strength?</li>
+              <li>Was “school alignment” judged by topic, method, field, or supervisor fit?</li>
+              <li>Did the evidence support the score, or was the score based on general impression?</li>
+              <li>Were “Weak Accept” and “Reject” used consistently?</li>
+              <li>What makes required revision actionable rather than vague?</li>
+              <li>Did the proposal’s field affect expectations of methodology or contribution?</li>
+            </ul>
+          </article>
+
+          <article class="flow-card">
+            <h3>Comparing Individual Reviewer Outcomes</h3>
+            <p>Export each individual review using <strong>Save Review</strong>, then compare:</p>
+            <ul>
+              <li>Scores by criterion across reviewers</li>
+              <li>Average score per reviewer</li>
+              <li>Final recommendation per reviewer</li>
+              <li>Evidence cited for each criterion</li>
+              <li>Strength/concern/revision comments</li>
+              <li>Difference between numerical score and written recommendation</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
